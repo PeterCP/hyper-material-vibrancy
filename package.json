@@ -1,20 +1,24 @@
 {
-  "name": "hyper-material-vibrancy",
+  "name": "hyperterm-material-vibrancy",
   "version": "0.2.0",
   "description": "A material theme for Hyper.app",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/dotcypress/hyper-material-vibrancy"
-  },
-  "main": "index.js",
+  "author": "PeterCP <pacp95@gmail.com>",
+  "license": "MIT",
   "keywords": [
     "hyperterm",
     "hyper",
     "hyper.app",
     "material"
   ],
-  "author": "Vitaly Domnikov <dotcypress@gmail.com>",
-  "license": "MIT",
+  "homepage": "https://github.com/petercp/hyperterm-material-vibrancy#readme",
+  "bugs": {
+    "url": "https://github.com/petercp/hyperterm-material-vibrancy/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petercp/hyperterm-material-vibrancy.git"
+  },
+  "main": "index.js",
   "dependencies": {
     "parse-color": "^1.0.0"
   }
