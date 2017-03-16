@@ -37,7 +37,7 @@ exports.decorateConfig = (config) => {
   return Object.assign({}, config, {
 
     foregroundColor: colors.white,
-    backgroundColor: rgba(colors.background, config.backgroundOpacity || 0.5),
+    backgroundColor: rgba(colors.background, config.backgroundOpacity || 0.6),
     borderColor: 'transparent',
     cursorColor: colors.lightCyan,
     colors: colors,
