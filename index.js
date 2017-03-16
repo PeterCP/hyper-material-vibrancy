@@ -1,28 +1,47 @@
-exports.onWindow = browserWindow => browserWindow.setVibrancy('ultra-dark');
+// Function to add alpha to colors.
+const parse = require('parse-color');
+const rgba = (color, alpha) => {
+  const { rgb } = parse(color);
+  if (!rgb) return color;
+  return `rgba(${rgb.join(', ')}, ${alpha})`;
+};
+
+// Color palette
+const colors = {
+  black: '#263238',
+  red: '#ff5252',
+  green: '#9ccc65',
+  yellow: '#fee94e',
+  blue: '#2b98f0',
+  magenta: '#b38bfc',
+  cyan: '#68b6f3',
+  white: '#eceff1',
+
+  lightBlack: '#617d8a',
+  lightRed: '#fc625d',
+  lightGreen: '#9ccc65',
+  lightYellow: '#fee94e',
+  lightBlue: '#2b98f0',
+  lightMagenta: '#b38bfc',
+  lightCyan: '#68b6f3',
+  lightWhite: '#ffffff',
+
+  background: '#13181b',
+};
+
+// Vibrancy
+exports.onWindow = browserWindow => browserWindow.setVibrancy('dark');
+
+// Configuration
 exports.decorateConfig = (config) => {
   return Object.assign({}, config, {
-    foregroundColor: '#eceff1',
-    backgroundColor: 'rgba(38, 50, 56, 0.9)',
+
+    foregroundColor: colors.white,
+    backgroundColor: rgba(colors.background, config.backgroundOpacity || 0.5),
     borderColor: 'transparent',
-    cursorColor: '#68b6f3',
-    colors: [
-      '#263238',
-      '#ff5252',
-      '#9ccc65',
-      '#fee94e',
-      '#2b98f0',
-      '#b38bfc',
-      '#68b6f3',
-      '#eceff1',
-      '#617d8a',
-      '#fc625d',
-      '#9ccc65',
-      '#fee94e',
-      '#2b98f0',
-      '#b38bfc',
-      '#68b6f3',
-      '#ffffff'
-    ],
+    cursorColor: colors.lightCyan,
+    colors: colors,
+
     termCSS: `
       ${config.termCSS || ''}
       @keyframes blink-animation {
@@ -43,10 +62,18 @@ exports.decorateConfig = (config) => {
         background-color: rgba(236, 239, 241, 0.4);
       }
     `,
+
     css: `
       ${config.css || ''}
       .header_header {
-        background: rgba(34, 45, 50, 0.5) !important;
+        background: ${rgba(colors.background, 0.2)} !important;
+        transition: background 250ms ease;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+      .header_header:hover {
+        background: ${rgba(colors.background, 0.5)} !important;
       }
       .hyperterm_main, .tab_tab, .tab_text {
         border: none !important;
@@ -67,6 +94,14 @@ exports.decorateConfig = (config) => {
       }
       .tab_active::before {
         border-bottom: 3px solid #a04a92;
+      }
+      .splitpane_divider {
+        margin: 0;
+        background: ${rgba(colors.lightCyan, 0.2)} !important;
+        transition: background 250ms ease;
+      }
+      .splitpane_divider:hover {
+        background: ${rgba(colors.lightCyan, 0.5)} !important;
       }
     `
   })
