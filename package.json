@@ -14,5 +14,8 @@
     "material"
   ],
   "author": "Vitaly Domnikov <dotcypress@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "parse-color": "^1.0.0"
+  }
 }
