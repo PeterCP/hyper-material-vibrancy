@@ -6,18 +6,16 @@ Material theme for [Hyper](https://hyper.is).
 
 ## Install
 
-Add `hyper-material-vibrancy` to your plugins list in `~/.hyperterm.js`:
+Add `hyper-material-vibrancy` to your plugins list in `~/.hyperterm.js`. You
+can optionally set the window background opacity to adjust the vibrancy effect.
 
 ```js
-plugins: [
-  // a list of plugins to fetch and install from npm
-  // format: [@org/]project[#version]
-  // examples:
-  //   `hyperpower`
-  //   `@company/project`
-  //   `project#1.0.1`
+config: {
+  // Optional setting. Default: 0.6
+  backgroundOpacity: 0.6,
+
   plugins: [
     'hyper-material-vibrancy'
   ]
-]
+}
 ```
