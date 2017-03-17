@@ -34,10 +34,20 @@ exports.onWindow = browserWindow => browserWindow.setVibrancy('dark');
 
 // Configuration
 exports.decorateConfig = (config) => {
+  const backgroundColor = rgba(
+    colors.background,
+    config.backgroundOpacity || 0.5
+  )
+
+  const headerOpacity = Object.assign({
+    normal: 0.4,
+    hover: 0.8
+  }, config.headerOpacity)
+
   return Object.assign({}, config, {
 
     foregroundColor: colors.white,
-    backgroundColor: rgba(colors.background, config.backgroundOpacity || 0.6),
+    backgroundColor: backgroundColor,
     borderColor: 'transparent',
     cursorColor: colors.lightCyan,
     colors: colors,
@@ -66,14 +76,25 @@ exports.decorateConfig = (config) => {
     css: `
       ${config.css || ''}
       .header_header {
-        background: ${rgba(colors.background, 0.2)} !important;
-        transition: background 250ms ease;
         top: 0;
         left: 0;
         right: 0;
       }
-      .header_header:hover {
-        background: ${rgba(colors.background, 0.5)} !important;
+      .header_header::before {
+        content: '';
+        position: absolute;
+        display: block;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: ${backgroundColor};
+        opacity: ${headerOpacity.normal};
+        transition: opacity 250ms ease;
+        z-index: -1;
+      }
+      .header_header:hover::before {
+        opacity: ${headerOpacity.hover};
       }
       .hyperterm_main, .tab_tab, .tab_text {
         border: none !important;
