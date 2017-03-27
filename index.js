@@ -36,7 +36,7 @@ exports.onWindow = browserWindow => browserWindow.setVibrancy('dark');
 exports.decorateConfig = (config) => {
   const backgroundColor = rgba(
     colors.background,
-    config.backgroundOpacity || 0.5
+    config.backgroundOpacity || 0.7
   )
 
   const headerOpacity = Object.assign({
